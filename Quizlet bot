@@ -1,0 +1,59 @@
+const puppeteer = require('puppeteer')
+
+
+const product_url = 'https://quizlet.com/live';
+
+async function quizlet(){
+    var x = false
+    while(x == false){
+        const browser = await puppeteer.launch({headless: false});
+        const page = await browser.newPage();
+        await page.goto(product_url);
+        await page.waitForSelector("input[class = 'UIInput-input']")
+        await page.type("input[class = 'UIInput-input']", '149413')
+        await page.click("button[class = 'UIButton UIButton--hero']")
+        await page.waitFor(2000)
+        var c = 'abcdefghijklmnopqrstuvwxyz';
+        var s = '';
+        for(var ii=0; ii<1; ii++){
+            s += c[Math.floor(Math.random() * c.length)];
+        }
+
+        var a = 'abcdefghijklmnopqrstuvwxyz';
+        var b = '';
+        for(var ii=0; ii<1; ii++){
+            b += a[Math.floor(Math.random() * a.length)];
+        }
+
+        var d = 'abcdefghijklmnopqrstuvwxyz';
+        var e = '';
+        for(var ii=0; ii<1; ii++){
+            e += d[Math.floor(Math.random() * d.length)];
+        }
+
+        var f = 'abcdefghijklmnopqrstuvwxyz';
+        var g = '';
+        for(var ii=0; ii<1; ii++){
+            g += f[Math.floor(Math.random() * f.length)];
+        }
+
+        var j = 'abcdefghijklmnopqrstuvwxyz';
+        var h = '';
+        for(var ii=0; ii<1; ii++){
+            h += j[Math.floor(Math.random() * j.length)];
+        }
+
+        await page.keyboard.press(s)
+        await page.keyboard.press(b)
+        await page.keyboard.press(e)
+        await page.keyboard.press(g)
+        await page.keyboard.press(h)
+        
+        await page.click("button[class = 'UIButton UIButton--hero']")
+        await browser.close();
+    
+
+    }
+}
+
+quizlet();
